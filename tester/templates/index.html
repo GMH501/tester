@@ -55,16 +55,16 @@
             <div class="card-body">
               <div>
                 <div class="row">
-                  <div class="col-sm">
-                    <button type="button" class="btn btn-success mb-1">START <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-info mb-1">STOP <i class="fas fa-stop-circle" aria-hidden="true"></i></button>
+                  <div class="col-sm container-fluid">
+                    <button type="button" id="startButton" class="btn btn-success mb-1">START <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+                    <button type="button" id="stopButton" class="btn btn-info mb-1">STOP <i class="fas fa-stop-circle" aria-hidden="true"></i></button>
                     <video
                     id="my-video"
                     class="video-js"
                     controls
                     preload="auto"
                     width="640"
-                    height="264"
+                    height="306"
                     poster="/static/selenium.png"
                     data-setup="{}"
                     >
@@ -153,11 +153,19 @@ $(document).ready(function() {
     } );
 } );
 
-// setInterval( function () {
-//     table.ajax.reload( null, false ); // https://datatables.net/reference/api/ajax.reload()
-// }, 1000 );
-
-
+$('#startButton').click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/test",
+        success: function(result) {
+            alert('ok');
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+});
 
 //var getData = function() {   //TOGGLIERE LA PRIMA RIGA DI COMMENTI DA QUESTO BLOCCO
 //  $.ajax({
