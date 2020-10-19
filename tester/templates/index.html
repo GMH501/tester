@@ -20,22 +20,14 @@
 
   <!-- Custom styles for this template-->
   <link href="../static/Bootstrap/css/sb-admin.css" rel="stylesheet">
-
-   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/b-1.5.6/datatables.min.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
   <script type="text/javascript" src="../static/Bootstrap/js/moment.js"></script>
-<style>
-  .video-js-responsive-container .video-js {
-    height: 75%; 
-    width: 75%;
-    position: absolute;
-    top: 12.5%;
-    left: 12.5%;
-}
-</style>
+
 <body id="page-top">
 
     <!-- Navbar -->
@@ -59,11 +51,13 @@
       <div class="container-fluid">
         <!-- Area Chart Example-->
            <!--<div class="card-columns">-->
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-body">
               <div>
                 <div class="row">
                   <div class="col-sm">
+                    <button type="button" class="btn btn-success mb-1">START <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-info mb-1">STOP <i class="fas fa-stop-circle" aria-hidden="true"></i></button>
                     <video
                     id="my-video"
                     class="video-js"
@@ -107,9 +101,18 @@
               </div>
             </div>
         </div>
-      
+      <div></div>
       <!-- /.container-fluid -->
 
+      <!-- Sticky Footer -->
+      <footer class="container-fluid sticky-footer w-100 font-small pt-4">
+        <div class="container-fluid text-center text-md-left">
+          <div class="copyright text-center py-3">
+            <span>Powered by <a style="color: black;" href="https://github.com/gmh501"><b>GMH501</b></a>.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
 
     </div>
     <!-- /.content-wrapper -->
@@ -133,6 +136,10 @@ var table = null
 
 $(document).ready(function() {
     var table = $('#dataTable').DataTable( {
+        "bLengthChange": false,
+        "sScrollY": "220px", // permette di scrollare in verticale la tabella
+        "bPaginate": false,
+        "bInfo" : false, // rimuove "Showing n of x entries"
         "ajax": "/test",
         "columns": [
         { data: 'name' },
